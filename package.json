@@ -1,0 +1,16 @@
+{
+  "name": "nextql_schema",
+  "version": "0.0.1",
+  "description": "make graphql out values to schema",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.6",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "author": "dennis ko",
+  "license": "Apache-2.0"
+}
