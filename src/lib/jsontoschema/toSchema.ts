@@ -15,13 +15,8 @@
  */
 
 
-const isInteger = require("lodash.isinteger");
-const isBoolean = require("lodash.isboolean");
-const isNumber = require("lodash.isnumber");
-const isObject = require("lodash.isobject");
-const _set = require("lodash.set");
-
-// import { isInteger } from 'lodash.isinteger'
+// const _set = require("lodash.set");
+import _ from 'lodash'
 
 const transformPrimitive = (value:any) => {
   if (typeof value === 'number') {
@@ -38,22 +33,30 @@ const badTypeNameRegex = /[\W]+/g;
 
 const cleanName = (name:string) => name.replace(badTypeNameRegex, "");
 
+type StackItem = {
+  obj: any;
+  path: string;
+  cleanedPath: string;
+}
+
 const toSchema = (input:any[]) => {
   const result = {};
-  const processedItemsCache = [];
-  const stack = [{ obj: input, path: "", cleanedPath: "" }];
+  const processedItemsCache:any[] = [];
+  const stack:StackItem[] = [{ obj: input, path: "", cleanedPath: "" }];
 
   while (stack.length > 0) {
-    const { obj, path, cleanedPath } = stack.pop();
+    const tempStack = stack.pop() 
+    const { obj, path, cleanedPath } = tempStack as StackItem;
 
     // eslint-disable-next-line max-statements
     Object.keys(obj).forEach((key) => {
       let currentValue = obj[key];
 
-      if (!Array.isArray(currentValue) && !isObject(currentValue)) {
+      if (!Array.isArray(currentValue) && typeof currentValue !== 'object') {
         const newObjValue = transformPrimitive(currentValue);
         const newObjValuePath = cleanedPath ? `${cleanedPath}.` : "";
-        _set(result, `${newObjValuePath}${cleanName(key)}`, newObjValue);
+        // console.log(`${newObjValuePath}${cleanName(key)}`)
+        _.set(result, `${newObjValuePath}${cleanName(key)}`, newObjValue);
         return;
       }
 
