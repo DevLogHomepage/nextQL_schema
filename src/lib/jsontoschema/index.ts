@@ -12,11 +12,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License."
+ * 
+ * modified by dennis ko 07 21 2023
+ * 
  */
-
-
-// const { toSchema } = require("./to-schema");
-// const { stringifySchema } = require("./stringify-schema");
 
 import { stringifySchema } from './stringifySchema'
 
@@ -30,7 +29,7 @@ const safeFnExecute = (fn:Function) => {
   }
 };
 
-const validateJson = (jsonInput:string) => {
+const validateJson = (jsonInput:any) => {
   const { error: jsonError, value } = safeFnExecute(() =>
     JSON.parse(jsonInput)
   );
@@ -52,12 +51,11 @@ const jsonToSchema = ({
   prefix = "",
   jsonInput,
 }:{baseType:string,prefix:string,jsonInput:any[]}) => {
-  // console.log("1")
-  // const { error, value } = validateJson(jsonInput);
-  // if (error) {
-  //   return { error };
-  // }
-  console.log("2")
+  console.log("1")
+  const { error, value } = validateJson(jsonInput);
+  if (error) {
+    return { error };
+  }
   return safeFnExecute(() =>
     stringifySchema(baseType, prefix, toSchema(jsonInput))
   );
