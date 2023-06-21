@@ -2,7 +2,8 @@
   "name": "nextql_schema",
   "version": "0.0.2",
   "description": "make graphql out values to schema",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx --package ts-node node --loader ts-node/esm ./test/testing.ts",
