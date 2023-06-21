@@ -2,3 +2,5 @@ test
 .gitignore
 .vscode
 temp
+tsconfig.json
+src
