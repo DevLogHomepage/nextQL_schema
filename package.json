@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx --package ts-node node --loader ts-node/esm ./test/testing.ts"
+    "dev": "npx --package ts-node node --loader ts-node/esm ./test/testing.ts",
+    "clean": "rm -rf ./dist/*",
+    "build": "tsc && tsc-alias"
   },
   "devDependencies": {
     "ts-node": "^10.9.1",
