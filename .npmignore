@@ -3,4 +3,5 @@ test
 .vscode
 temp
 tsconfig.json
-./src
+src
+!dist/src
