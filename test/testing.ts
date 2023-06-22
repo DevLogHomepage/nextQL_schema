@@ -1,5 +1,6 @@
-import { jsonToSchema } from "@/lib/jsontoschema";
+// import { jsonToSchema } from "@/lib/jsontoschema";
 import fs from 'fs'
+import { jsonToSchema } from 'nextql_schema'
 // const jsonText = fs.readFileSync('./test/test.txt').toString()
 // console.log(JSON.parse(jsonText))
 
