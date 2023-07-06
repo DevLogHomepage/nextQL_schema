@@ -22,9 +22,9 @@ import { schemaClassification } from './schemaClassification';
 
 import { toSchema } from './toSchema'
 
-const safeFnExecute = (fn:Function) => {
+const safeFnExecute = <T>(fn:() => T) => {
   try {
-    return { value: fn() };
+    return { value: fn() as T };
   } catch (error:any) {
     return { error };
   }
