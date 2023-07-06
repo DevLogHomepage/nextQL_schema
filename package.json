@@ -1,6 +1,6 @@
 {
   "name": "nextql_schema",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "make graphql out values to schema",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
