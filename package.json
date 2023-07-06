@@ -2,13 +2,13 @@
   "name": "nextql_schema",
   "version": "0.0.10",
   "description": "make graphql out values to schema",
-  "main": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx --package ts-node node --loader ts-node/esm ./test/testing.ts",
     "clean": "rm -rf ./dist/*",
-    "build": "tsc && tsc-alias"
+    "build": "tsc && tsc-alias",
+    "test": "npm run clean && npm run build",
+    "dev": "tsc --w && tsc-alias"
   },
   "devDependencies": {
     "ts-node": "^10.9.1",
@@ -20,6 +20,7 @@
   "dependencies": {
     "@types/lodash": "^4.14.195",
     "change-case": "^4.1.2",
+    "graphql-compose": "^9.0.10",
     "lodash": "^4.17.21"
   }
 }

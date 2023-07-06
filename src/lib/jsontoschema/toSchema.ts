@@ -51,13 +51,13 @@ const toSchema = (input:any[]) => {
     const { obj, path, cleanedPath } = tempStack as StackItem;
 
     // eslint-disable-next-line max-statements
+    if(obj === null || obj === undefined) continue;
+    
     Object.keys(obj).forEach((key) => {
       let currentValue = obj[key];
-
       if (!Array.isArray(currentValue) && typeof currentValue !== 'object') {
         const newObjValue = transformPrimitive(currentValue);
         const newObjValuePath = cleanedPath ? `${cleanedPath}.` : "";
-        // console.log(`${newObjValuePath}${cleanName(key)}`)
         _.set(result, `${newObjValuePath}${cleanName(key)}`, newObjValue);
         return;
       }
